@@ -1,0 +1,49 @@
+<% require '/appl/opt/ood_util/attributes/csc_slurm_project' %>
+<% require '/appl/opt/ood_util/attributes/csc_slurm_partition' %>
+---
+cluster: "puhti"
+cacheable: false
+attributes:
+  cores:
+      value: 1
+      max: 4
+      label: "Number of CPUs"
+      min: 1
+      widget: number_field
+      cacheable: false
+  nvme:
+      value: 32
+      widget: number_field
+      label: "Local disk (GB)"
+      min: 0
+      max: 640
+  csc_slurm_partition:
+      value: "interactive"
+  memory:
+      widget: number_field
+      label: "Memory (GB)"
+      max: 64
+      min: 2
+      value: 2
+      cacheable: false
+  time:
+      value: "4:00:00"
+      help: "d-hh:mm:ss, or hh:mm:ss"
+      cacheable: false
+  modules:
+      label: "R version"
+      widget: select
+      options:
+      - "r-env-singularity/4.0.3"
+      - "r-env-singularity/4.0.5"
+  mt:
+    label: "Multithreadded"
+    widget: "check_box"
+form:
+  - cores
+  - memory
+  - nvme
+  - csc_slurm_project
+  - time
+  - modules
+  - mt

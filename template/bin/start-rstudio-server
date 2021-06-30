@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Unset XDG_RUNTIME_DIR
+XDG_RUNTIME_DIR=""
+
+
+# Get RSTUDIO_UUID
+export RSTUDIO_UUID=$(uuidgen)
+echo $RSTUDIO_UUID > $TMPDIR/${USER}_secure-cookie-key
+
+# TMPDIR settings
+if test -f ~/.Renviron; then
+    sed -i '/TMPDIR/d' ~/.Renviron
+    sed -i '/OMP_NUM_THREADS/d' ~/.Renviron
+fi
+
+echo "TMPDIR=$TMPDIR" >> ~/.Renviron
+
+mkdir -p "$TMPDIR/var/lib"
+mkdir -p "$TMPDIR/var/run"
+
+ 
+
+
+
+# Start RStudio Server
+PASSWORD=$RSTUDIO_PASSWORD \
+RSTUDIO_SESSION_TIMEOUT='0' \
+singularity exec \
+-B $TMPDIR/var/lib:/var/lib/rstudio-server \
+-B $TMPDIR/var/run:/var/run/rstudio-server \
+-B $TMPDIR:$TMPDIR \
+-B /users:/users \
+-B /projappl:/projappl \
+-B /appl/data:/appl/data \
+-B /appl/opt:/appl/opt \
+-B /scratch:/scratch \
+-B /appl/soft/math/r-env-singularity/$rver/$rver-rpackages:/appl/soft/math/r-env-singularity/$rver/$rver-rpackages \
+/appl/soft/math/r-env-singularity/$rver/$rver.sif rserver \
+--www-port ${PORT} \
+--auth-none=0 \
+--auth-encrypt-password=0 \
+--server-data-dir "${TMPDIR}" \
+--secure-cookie-key-file $TMPDIR/${USER}_secure-cookie-key \
+--auth-pam-helper-path=pam-helper

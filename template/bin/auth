@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+# Confirm username is supplied
+echo "DEBUg $(date)" >> $HOME/log.log
+echo "$@" >> $HOME/log.log
+echo "N args: $#" >> $HOME/log.log
+#if [[ $# -ne 1 ]]; then
+#  echo "Usage: auth USERNAME"
+#  echo "Exit_Arg $(date)" >> $HOME/log.log
+#  exit 1
+#fi
+USERNAME="${1}"
+
+# Confirm password environment variable exists
+if [[ -z ${RSTUDIO_PASSWORD} ]]; then
+  echo "The environment variable RSTUDIO_PASSWORD is not set"
+  echo "Exit_No_env $(date)" >> $HOME/log.log
+  exit 1
+fi
+
+# Read in the password from user
+read -s -p "Password: " PASSWORD
+echo ""
+
+if [[ ${USERNAME} == ${USER} && ${PASSWORD} == ${RSTUDIO_PASSWORD} ]]; then
+  echo "Successful authentication"
+  exit 0
+else
+  echo "Invalid authentication"
+  echo "Exit_w_pass $(date)" >> $HOME/log.log
+  exit 1
+fi
+

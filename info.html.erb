@@ -1,0 +1,16 @@
+<i>Direct authentication is broken in <b>4.0.5</b>
+Login using the below credentials.
+Then edit the url so that it ends with <b>[port]/</b> and reload.
+This step will be automated once we can pass custom information
+to the view.html.erb file
+</i><br>
+<div class="alert alert-warning">
+<% begin %>   
+<b>Username:</b>
+<%= ENV["USER"]%>
+<br>
+<b>Password:</b> <%= connect.password %>
+<% rescue => e%>
+Waiting for job to start
+<% end %>
+</div>

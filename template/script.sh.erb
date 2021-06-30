@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+<%- unless context.modules.blank? -%>
+module purge                      
+                                  
+# Load the require modules        
+module load <%= context.modules %>
+                                  
+# List loaded modules             
+module list                       
+<%- end -%>                       
+
+<%- if context.mt == 1 -%> 
+  export SINGULARITYENV_OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK 
+  export SINGULARITYENV_OMP_PLACES=cores
+  export SINGULARITYENV_OMP_PROC_BIND=close
+<%- end -%>
+
+
+PP=${PWD}/bin/
+$PP/start-rstudio-server

@@ -1,0 +1,11 @@
+---
+batch_connect:
+  template: "basic"
+script:
+  native:
+      - '-c'
+      - '<%= cores  %>'
+      - '-t'
+      - '<%= time %>'
+      - '--mem=<%= memory %>G'
+      - '--gres=nvme:<%= nvme %>'
