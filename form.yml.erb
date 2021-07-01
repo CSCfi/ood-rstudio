@@ -19,6 +19,7 @@ attributes:
       max: 640
   csc_slurm_partition:
       value: "interactive"
+      fixed: true
   memory:
       widget: number_field
       label: "Memory (GB)"
@@ -44,6 +45,7 @@ form:
   - memory
   - nvme
   - csc_slurm_project
+  - csc_slurm_partition
   - time
   - modules
   - mt
