@@ -10,4 +10,5 @@ This then requires manually editing the url (make it end in `<port>/`) and reloa
 after manually inputting the password and being redirected to some internal error page.
 
 This can be fixed if we can dynamically drop the `auth-do-sign-in` depending on the version. The we could just insert the password normally. For completely auto login,
-something needs to be fixed / changed for the newest versions rstudio. 
+something needs to be fixed / changed for the newest versions rstudio.  
+Solution for direct authentication that seems to work, may break in future versions: <https://discourse.osc.edu/t/rstudio-when-launched-without-singularity-is-having-strange-troubles-with-authentication/1213/48>

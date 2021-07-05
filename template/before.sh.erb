@@ -1,9 +1,11 @@
+<%- require 'securerandom' %>
 # Export the module function if it exists
 source /appl/profile/zz-csc-env.sh
 [[ $(type -t module) == "function" ]] && export -f module
 
 
 export rver=$(echo <%= context.modules %> | cut -d "/" -f 2)
+export csrftoken="<%= SecureRandom.uuid %>"
 # Find available port to run server on
 port=$(find_port ${host})
 export PORT=$port
