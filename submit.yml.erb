@@ -6,8 +6,8 @@ batch_connect:
 script:
   native:
       - '-c'
-      - '<%= cores  %>'
+      - '<%= csc_cores  %>'
       - '-t'
-      - '<%= time %>'
-      - '--mem=<%= memory %>G'
-      - '--gres=nvme:<%= nvme %>'
+      - '<%= csc_time %>'
+      - '--mem=<%= csc_memory %>G'
+      - '--gres=nvme:<%= csc_nvme %>'
