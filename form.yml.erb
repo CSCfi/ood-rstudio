@@ -1,35 +1,21 @@
-<% require '/appl/opt/ood_util/attributes/csc_slurm_project' %>
-<% require '/appl/opt/ood_util/attributes/csc_slurm_partition' %>
+<% require "/ood/deps/util/attributes/csc_smart_attributes" -%>
 ---
 cluster: "puhti"
 cacheable: false
 attributes:
-  cores:
-      value: 1
+  csc_cores:
       max: 4
-      label: "Number of CPUs"
-      min: 1
-      widget: number_field
       cacheable: false
-  nvme:
+  csc_nvme:
       value: 32
-      widget: number_field
-      label: "Local disk (GB)"
-      min: 0
-      max: 640
   csc_slurm_partition:
       value: "interactive"
       fixed: true
-  memory:
-      widget: number_field
-      label: "Memory (GB)"
-      max: 64
+  csc_memory:
       min: 2
       value: 2
       cacheable: false
-  time:
-      value: "4:00:00"
-      help: "d-hh:mm:ss, or hh:mm:ss"
+  csc_time:
       cacheable: false
   modules:
       label: "R version"
@@ -41,11 +27,11 @@ attributes:
     label: "Multithreadded"
     widget: "check_box"
 form:
-  - cores
-  - memory
-  - nvme
+  - csc_cores
+  - csc_memory
+  - csc_nvme
   - csc_slurm_project
   - csc_slurm_partition
-  - time
+  - csc_time
   - modules
   - mt
