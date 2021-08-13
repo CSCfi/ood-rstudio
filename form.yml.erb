@@ -16,7 +16,10 @@ attributes:
       value: 2
       cacheable: false
   csc_time:
-      cacheable: false
+    cacheable: false
+  csc_slurm_limits:
+    data:
+      partition: "interactive"
   modules:
       label: "R version"
       widget: select
@@ -35,3 +38,4 @@ form:
   - csc_time
   - modules
   - mt
+  - csc_slurm_limits
