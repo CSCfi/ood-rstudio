@@ -10,8 +10,10 @@ attributes:
       value: 32
   csc_slurm_partition:
     value: "interactive"
-    ignore:
-      - "large"
+    select:
+      - "interactive"
+      - "small"
+      - "test"
   csc_memory:
       min: 2
       value: 2
