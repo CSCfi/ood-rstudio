@@ -10,17 +10,16 @@ attributes:
       value: 32
   csc_slurm_partition:
     value: "interactive"
-    ignore:
-      - "large"
+    select:
+      - "interactive"
+      - "small"
+      - "test"
   csc_memory:
       min: 2
       value: 2
       cacheable: false
   csc_time:
     cacheable: false
-  csc_slurm_limits:
-    data:
-      partition: "interactive"
   modules:
       label: "R version"
       widget: select
@@ -31,12 +30,14 @@ attributes:
     label: "Multithreadded"
     widget: "check_box"
 form:
+  - csc_slurm_project
+  - csc_slurm_partition
+  - csc_header_resources
   - csc_cores
   - csc_memory
   - csc_nvme
-  - csc_slurm_project
-  - csc_slurm_partition
   - csc_time
+  - csc_header_settings
   - modules
   - mt
   - csc_slurm_limits
