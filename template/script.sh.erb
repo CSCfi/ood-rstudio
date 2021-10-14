@@ -9,12 +9,17 @@ module load <%= context.modules %>
 module list                       
 <%- end -%>                       
 
-<%- if context.mt == 1 -%> 
+<%- if context.mt == "1" -%> 
   export SINGULARITYENV_OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK 
   export SINGULARITYENV_OMP_PLACES=cores
   export SINGULARITYENV_OMP_PROC_BIND=close
+  export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK 
+  export OMP_PLACES=cores
+  export OMP_PROC_BIND=close
 <%- end -%>
 
 
-PP=${PWD}/bin/
-$PP/start-rstudio-server
+start-rstudio-ood
+wait
+#PP=${PWD}/bin/
+#$PP/start-rstudio-server
