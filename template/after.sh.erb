@@ -7,3 +7,13 @@ else
   clean_up 1
 fi
 sleep 2
+
+function cleanup()
+{
+    sed -i '/TMPDIR/d' ~/.Renviron
+    sed -i '/OMP/d' ~/.Renviron
+    sed -i '/PKG/d' ~/.Renviron
+    sed -i '/SLURM/d' ~/.Renviron
+}
+
+trap cleanup TERM
