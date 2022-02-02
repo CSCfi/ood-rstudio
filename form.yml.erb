@@ -16,6 +16,13 @@ attributes:
       - "test"
       - "fmi"
       - "fmitest"
+  csc_slurm_reservation:
+    partitions:
+      - "interactive"
+      - "small"
+      - "test"
+      - "fmi"
+      - "fmitest"
   csc_memory:
       min: 2
       value: 2
@@ -36,6 +43,7 @@ attributes:
     app: "sys/ood-rstudio"
 
 form:
+  - csc_slurm_reservation
   - csc_slurm_project
   - csc_slurm_partition
   - csc_header_resources
