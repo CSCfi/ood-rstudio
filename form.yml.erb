@@ -9,7 +9,7 @@ attributes:
       value: 32
       # TODO: improve form validation to do this in a more convenient way
       data:
-        min: min_mem
+        min: min_nvme
   csc_slurm_partition:
     value: "interactive"
     select:
@@ -33,9 +33,9 @@ attributes:
     data:
       limits:
         interactive:
-          min_mem: 1
+          min_nvme: 1
         small:
-          min_mem: 1
+          min_nvme: 1
   modules:
       label: "R version"
       widget: select
