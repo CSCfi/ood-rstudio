@@ -8,6 +8,9 @@ attributes:
       cacheable: false
   csc_nvme:
       value: 32
+      # TODO: improve form validation to do this in a more convenient way
+      data:
+        min: min_mem
   csc_slurm_partition:
     value: "interactive"
     select:
@@ -29,6 +32,13 @@ attributes:
       cacheable: false
   csc_time:
     cacheable: false
+  csc_slurm_limits:
+    data:
+      limits:
+        interactive:
+          min_mem: 1
+        small:
+          min_mem: 1
   modules:
       label: "R version"
       widget: select

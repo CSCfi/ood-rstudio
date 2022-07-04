@@ -1,4 +1,8 @@
 ---
+
+<% if csc_nvme.to_i < 1 && !(csc_slurm_partition == "fmi" || csc_slurm_partition == "fmitest") %>
+  <% raise "Minimum 1 GB of local disk must be used when running RStudio." %>
+<% end %>
 batch_connect:
   template: "basic"
   conn_params:
