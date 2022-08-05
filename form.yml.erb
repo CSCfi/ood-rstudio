@@ -1,10 +1,8 @@
 ---
 cluster: "puhti"
-cacheable: false
 attributes:
   csc_cores:
-      max: 4
-      cacheable: false
+    max: 4
   csc_nvme:
       value: 32
       # TODO: improve form validation to do this in a more convenient way
@@ -24,11 +22,8 @@ attributes:
       - "fmi"
       - "fmitest"
   csc_memory:
-      min: 2
-      value: 2
-      cacheable: false
-  csc_time:
-    cacheable: false
+    min: 2
+    value: 2
   csc_slurm_limits:
     data:
       limits:
@@ -37,9 +32,9 @@ attributes:
         small:
           min_nvme: 1
   modules:
-      label: "R version"
-      widget: select
-      options:
+    label: "R version"
+    widget: select
+    options:
       - "r-env-singularity/4.1.1"
       - "r-env-singularity/4.0.5"
       - "r-env-singularity/4.0.3"
