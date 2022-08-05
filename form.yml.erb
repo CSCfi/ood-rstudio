@@ -4,10 +4,9 @@ attributes:
   csc_cores:
     max: 4
   csc_nvme:
-      value: 32
-      # TODO: improve form validation to do this in a more convenient way
-      data:
-        min: min_nvme
+    value: 32
+    min-interactive: 1
+    min-small: 1
   csc_slurm_partition:
     value: "interactive"
     select:
@@ -24,13 +23,6 @@ attributes:
   csc_memory:
     min: 2
     value: 2
-  csc_slurm_limits:
-    data:
-      limits:
-        interactive:
-          min_nvme: 1
-        small:
-          min_nvme: 1
   modules:
     label: "R version"
     widget: select
